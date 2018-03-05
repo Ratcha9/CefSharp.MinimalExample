@@ -10,22 +10,29 @@
         public MainWindow()
         {
             InitializeComponent();
-            Browser.IsBrowserInitializedChanged += Browser_IsBrowserInitializedChanged;
         }
 
         #endregion
 
         #region Private Methods
 
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (Browser.CefSharpBrowser.IsBrowserInitialized)
+                Browser.CefSharpBrowser.Load("www.fishgl.com");
+            else
+                Browser.CefSharpBrowser.IsBrowserInitializedChanged += Browser_IsBrowserInitializedChanged;
+        }
+
         private void Browser_IsBrowserInitializedChanged(object sender, IsBrowserInitializedChangedEventArgs e)
         {
-            Browser.Load("www.google.com");
+            Browser.CefSharpBrowser.Load("www.fishgl.com");
         }
         #endregion
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var bitmap = ControlSnapshot.Snapshot(Browser);
+            var bitmap = ControlSnapshot.Snapshot(Browser.CefSharpBrowser);
             var imagesource = ControlSnapshot.CreateImageFromBitmap(bitmap);
             Window x = new Window()
             {
@@ -38,5 +45,6 @@
 
             x.Show();
         }
+
     }
 }

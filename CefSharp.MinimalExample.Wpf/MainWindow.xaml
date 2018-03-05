@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cef="clr-namespace:CefSharp;assembly=CefSharp.Core"
         xmlns:winForms="clr-namespace:CefSharp.WinForms;assembly=CefSharp.WinForms"
-        WindowState="Maximized">
+        xmlns:wpf="clr-namespace:CefSharp.MinimalExample.Wpf"
+        WindowState="Maximized"
+        Loaded="MainWindow_OnLoaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -13,15 +15,17 @@
 		<Border Margin="0,0,0,16" 
 		        Background="Gray"
 		        Padding="16">
-			<Button Width="125" 
-					HorizontalAlignment="Left"
-			        Content="Take Snapshot"
-			        Click="ButtonBase_OnClick"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Width="125" 
+                        Content="Take Snapshot"
+                        Click="ButtonBase_OnClick"/>
+                <ToggleButton Width="125" 
+                              x:Name="ToggleButton"
+                              Content="Toggle printwindow"/>
+            </StackPanel>
 		</Border>
         <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0,1">
-	        <WindowsFormsHost>
-				<winForms:ChromiumWebBrowser x:Name="Browser" />
-	        </WindowsFormsHost>
+	       <wpf:CustomBrowser x:Name="Browser" IsOffscreen="{Binding IsChecked, ElementName=ToggleButton}" />
         </Border>
         <StatusBar Grid.Row="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <StatusBar.ItemsPanel>

@@ -114,12 +114,18 @@
     <Compile Include="ControlSnapshot.cs" />
     <Compile Include="Converter\EnvironmentConverter.cs" />
     <Compile Include="Converter\TitleConverter.cs" />
+    <Compile Include="CustomBrowser.cs" />
+    <Compile Include="HwndCaptureHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
