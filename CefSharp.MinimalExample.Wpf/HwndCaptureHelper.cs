@@ -93,6 +93,8 @@ namespace CefSharp.MinimalExample.Wpf
             _image = null;
             _bitmapCapturedAction = null;
             _isCapturing = false;
+            _cancellationTokenSource.Dispose();
+            _cancellationTokenSource = null;
 
             double fps = (int)(_imgCountRendered / _watch.Elapsed.TotalSeconds);
             MessageBox.Show($"{fps} fps in total {_watch.Elapsed.TotalSeconds} seconds");

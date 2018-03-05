@@ -5,7 +5,8 @@
         xmlns:winForms="clr-namespace:CefSharp.WinForms;assembly=CefSharp.WinForms"
         xmlns:wpf="clr-namespace:CefSharp.MinimalExample.Wpf"
         WindowState="Maximized"
-        Loaded="MainWindow_OnLoaded">
+        Loaded="MainWindow_OnLoaded"
+        Closing="MainWindow_OnClosing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

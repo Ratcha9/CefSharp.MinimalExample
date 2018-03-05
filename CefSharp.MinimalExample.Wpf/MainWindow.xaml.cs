@@ -1,4 +1,6 @@
-﻿namespace CefSharp.MinimalExample.Wpf
+﻿using System.ComponentModel;
+
+namespace CefSharp.MinimalExample.Wpf
 {
     using System.Windows;
     using System.Windows.Controls;
@@ -46,5 +48,9 @@
             x.Show();
         }
 
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            ToggleButton.IsChecked = false;
+        }
     }
 }
